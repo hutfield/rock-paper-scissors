@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper and Scissors Game</title>
+</head>
+<body>
+    <script>
+        let possible_plays = ["rock", "paper", "scissors"];
+        function computerPlayer(){
+            let randomPlay= possible_plays[Math.floor(Math.random() * possible_plays.length)];
+
+            return randomPlay;
+
+        }
+        let computerSelection = computerPlayer();
+        let playerScore = 0;    //how to reset score after game ends?
+        let computerScore = 0;  //how to reset score after game ends?
+
+        function playGame(playerSelection, computerSelection){
+            
+                if(playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "scissors"){
+                    playerScore= playerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Rock beats Scissors, Player wins!");
+                    
+                    
+                } else if (playerSelection.toLocaleLowerCase() == "paper" && computerSelection == "rock"){
+                    playerScore= playerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Paper beats Rock, Player wins!");
+                    
+                    
+                } else if (playerSelection.toLocaleLowerCase() == "scissors" && computerSelection == "paper"){
+                    playerScore= playerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Scissors beats Paper, Player wins!");
+                    
+                    
+                } else if(computerSelection == "rock" && playerSelection.toLocaleLowerCase() == "scissors"){
+                    computerScore = computerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Rock beats Scissors, Computer wins!");
+                    
+                    
+                } else if (computerSelection == "paper" && playerSelection.toLocaleLowerCase() == "rock"){
+                    computerScore = computerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Paper beats Rock, Computer wins!");
+                    
+                    
+                } else if (computerSelection == "scissors" && playerSelection.toLocaleLowerCase() == "paper"){
+                    computerScore = computerScore +1;
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    console.log("Scissors beats Paper, Computer wins!");
+                    
+                    
+                } else{ /*if (playerSelection.toLocaleLowerCase() == "paper" && computerSelection == "paper" || 
+                           playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "rock" ||
+                           playerSelection.toLocaleLowerCase() == "scissors" && computerSelection == "scissors"){*/
+
+                            console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                            console.log( "Its a tie! Player: "+playerSelection+" - "+" Computer: "+computerSelection);
+                           }
+
+            
+            }
+
+            
+
+        
+
+        function game(){
+            for(let i = 1; i < 6; i++){
+                
+                let playerSelection = prompt("Choose Rock, Paper or Scissors"); //how to avoid syntaxError when "cancel" is pressed?
+                let computerSelection = computerPlayer();
+                
+                if(playerSelection.toLocaleLowerCase() === "rock" || playerSelection.toLocaleLowerCase() === "paper" || playerSelection.toLocaleLowerCase() === "scissors"){
+                    
+                    console.log("Round: "+ i);
+                    
+                    
+                    playGame(playerSelection, computerSelection);
+                    //if player wins, score++ else computer score++. Keep track.
+                    //if player and computer ties, no score is added.
+
+                    console.log('--------------------------');
+                    
+                }
+                    else{
+                console.log("Incorrect input, try again.");
+                console.log('--------------------------');
+                i--;
+                    }
+                }
+                
+                if(computerScore > playerScore){
+                    console.log("Game End: Computer wins the game!");
+                } else if (playerScore > computerScore){
+                    console.log("Game End: Player wins the game!");
+                } else {
+                    console.log("Game End: It's a tie!");
+                }
+        }
+
+        
+
+    </script>
+</body>
+</html>
