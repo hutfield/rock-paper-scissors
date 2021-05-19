@@ -8,18 +8,20 @@
 </head>
 <body>
     <script>
-        let possible_plays = ["rock", "paper", "scissors"];
-        function computerPlayer(){
+
+            let possible_plays = ["rock", "paper", "scissors"];
+
+    function computerPlayer(){
             let randomPlay= possible_plays[Math.floor(Math.random() * possible_plays.length)];
-
             return randomPlay;
-
         }
-        let computerSelection = computerPlayer();
-        let playerScore = 0;    //how to reset score after game ends?
-        let computerScore = 0;  //how to reset score after game ends?
+            let computerSelection = computerPlayer();
 
-        function playGame(playerSelection, computerSelection){
+            let playerScore = 0; //how to reset score after game ends?
+        
+            let computerScore = 0;  //how to reset score after game ends?
+
+    function playGame(playerSelection, computerSelection){
             
                 if(playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "scissors"){
                     playerScore= playerScore +1;
@@ -66,21 +68,20 @@
                            }
 
             
-            }
-
-            
+            } //end of function playGame();          
 
         
 
-        function game(){
+    function game(){
             for(let i = 1; i < 6; i++){
                 
                 let playerSelection = prompt("Choose Rock, Paper or Scissors"); //how to avoid syntaxError when "cancel" is pressed?
                 let computerSelection = computerPlayer();
                 
-                if(playerSelection.toLocaleLowerCase() === "rock" || playerSelection.toLocaleLowerCase() === "paper" || playerSelection.toLocaleLowerCase() === "scissors"){
+                    if(playerSelection.toLocaleLowerCase() === "rock" || playerSelection.toLocaleLowerCase() === "paper" || 
+                        playerSelection.toLocaleLowerCase() === "scissors"){
                     
-                    console.log("Round: "+ i);
+                        console.log("Round: "+ i);
                     
                     
                     playGame(playerSelection, computerSelection);
@@ -90,23 +91,22 @@
                     console.log('--------------------------');
                     
                 }
-                    else{
-                console.log("Incorrect input, try again.");
-                console.log('--------------------------');
-                i--;
+                    else
+                        {
+                            console.log("Incorrect input, try again.");
+                            console.log('--------------------------');
+                            i--;
                     }
                 }
                 
                 if(computerScore > playerScore){
                     console.log("Game End: Computer wins the game!");
-                } else if (playerScore > computerScore){
+                    }else if (playerScore > computerScore){
                     console.log("Game End: Player wins the game!");
-                } else {
+                    }else{
                     console.log("Game End: It's a tie!");
                 }
-        }
-
-        
+        }       
 
     </script>
 </body>
