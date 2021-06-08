@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper and Scissors Game</title>
+</head>
+<body>
+
+    <div id="results"></div><br>
+    <div id="player_details"></div><br>
+    <div id="final_score"></div>
+
+
+    <br>
+
+    <button id="rock_selection">Rock</button>
+    <button id="paper_selection">Paper</button>
+    <button id="scissors_selection">Scissors</button>
+
+    
+    <script>
+
+            let possible_plays = ["rock", "paper", "scissors"];
+
+    function computerPlayer(){
+            let randomPlay= possible_plays[Math.floor(Math.random() * possible_plays.length)];
+            return randomPlay;
+        }
+            
+
+            let playerScore = 0; 
+        
+            let computerScore = 0;
+
+            const logScore = document.getElementById('results');
+            const playerDetails = document.getElementById('player_details');
+            const finalScore = document.getElementById('final_score');
+            
+            
+
+    function playGame(playerSelection, computerSelection){
+            
+                if(playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "scissors"){
+                    playerScore= playerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Rock beats Scissors, Player wins!";
+                    
+                    console.log("Rock beats Scissors, Player wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else if (playerSelection.toLocaleLowerCase() == "paper" && computerSelection == "rock"){
+                    playerScore= playerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Paper beats Rock, Player wins!";
+                    console.log("Paper beats Rock, Player wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else if (playerSelection.toLocaleLowerCase() == "scissors" && computerSelection == "paper"){
+                    playerScore= playerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Scissors beats Paper, Player wins!";
+                    console.log("Scissors beats Paper, Player wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else if(computerSelection == "rock" && playerSelection.toLocaleLowerCase() == "scissors"){
+                    computerScore = computerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Rock beats Scissors, Computer wins!";
+                    console.log("Rock beats Scissors, Computer wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else if (computerSelection == "paper" && playerSelection.toLocaleLowerCase() == "rock"){
+                    computerScore = computerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Paper beats Rock, Computer wins!";
+                    console.log("Paper beats Rock, Computer wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else if (computerSelection == "scissors" && playerSelection.toLocaleLowerCase() == "paper"){
+                    computerScore = computerScore +1;
+
+                    logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                    playerDetails.innerHTML = "Scissors beats Paper, Computer wins!";
+                    console.log("Scissors beats Paper, Computer wins!");
+                    console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                    
+                    
+                    
+                } else{ 
+                            logScore.innerHTML = "Player: "+ playerScore+ " - "+ "Computer: "+ computerScore;
+                            playerDetails.innerHTML = "Its a tie! Player: "+playerSelection+" - "+" Computer: "+computerSelection;
+                            console.log( "Its a tie! Player: "+playerSelection+" - "+" Computer: "+computerSelection);
+                            console.log("Player: "+ playerScore+ " - "+ "Computer: "+ computerScore);
+                            
+                           }
+
+            
+            } //end of function playGame();          
+
+                const rockEvent = document.getElementById("rock_selection").addEventListener("click", function(){
+                    playRound("rock");
+                });
+                                
+                               
+
+                const paperEvent = document.getElementById("paper_selection").addEventListener("click", function(){
+                    playRound("paper");
+                });
+                               
+
+                const scissorsEvent = document.getElementById("scissors_selection").addEventListener("click", function(){
+                    playRound("scissors");
+                });
+                               
+   function playRound(playerSelection){
+            
+                
+            /*   let playerSelection = prompt("Choose Rock, Paper or Scissors"); //how to avoid syntaxError when "cancel" is pressed? */
+                let computerSelection = computerPlayer();
+                 
+         
+                    
+                playGame(playerSelection, computerSelection);
+                    //if player wins, score++ else computer score++. Keep track.
+                    //if player and computer ties, no score is added.
+                    //testing
+                    console.log('--------------------------');
+                    
+            
+                   
+               if(computerScore == 5){
+                    console.log("Game End: Computer wins the game!");
+                    finalScore.innerHTML = "Game End: Computer wins the game!";
+                    computerScore = 0;
+                    playerScore= 0;
+                    console.log('--------------------------');
+                    }else if (playerScore == 5){
+                    console.log("Game End: Player wins the game!");
+                    finalScore.innerHTML = "Game End: Player wins the game!";
+                    playerScore = 0;
+                    computerScore = 0;
+                    console.log('--------------------------');
+                    }
+                }
+
+                
+            
+                
+
+    </script>
+</body>
+</html>
